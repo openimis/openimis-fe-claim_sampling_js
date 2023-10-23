@@ -1,4 +1,4 @@
-export const MODULE_NAME = "claimSampling";
+export const MODULE_NAME = "ClaimSampling";
 
 export const RIGHT_QUERY = 123001;
 export const RIGHT_CREATE = 123002;

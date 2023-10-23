@@ -5,5 +5,6 @@
   "ClaimSampling.Form.Title": "Claim sample",
   "ClaimSampling.Form.Description": "Pick parameters of new claim sample",
   "ClaimSampling.Form.Create": "Create claim sample",
-  "ClaimSampling.Form.Cancel": "Cancel"
+  "ClaimSampling.Form.Cancel": "Cancel",
+  "ClaimSampling.create.mutationLabel": "Create Claim Sampling Batch"
 }

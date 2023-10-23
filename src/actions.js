@@ -1,23 +1,42 @@
-import { graphql, formatMutation, decodeId } from "@openimis/fe-core";
-import _ from "lodash";
-import _uuid from "lodash-uuid";
+import { graphql, formatMutation } from "@openimis/fe-core";
+import { REQUEST, ERROR, SUCCESS } from "./utils/action-types";
+import { ACTION_TYPE } from "./reducer";
 
-export function createClaimSamplingBatch(mm, claimSampleFilters) {
-  let projections = getClaimsProjections(mm, false);
-  let mutation = formatMutation("createClaimSamplingBatch", claimSampleFilters, "Create Claim Batch", null);
-  var requestedDateTime = new Date();
-  return graphql(mutation.payload, ["CLAIM_MUTATION_REQ", "CLAIM_DELIVER_CLAIMS_REVIEW_RESP", "CLAIM_MUTATION_ERR"], {
-    clientMutationId: mutation.clientMutationId,
-    clientMutationLabel,
-    clientMutationDetails: !!clientMutationDetails ? JSON.stringify(clientMutationDetails) : null,
-    requestedDateTime,
-  });
-}
+const formatFilters = ({ percentage, claimAdmin, filters }) => {
+  const processedFilters = Object.values(filters)
+    .map((filterData) => {
+      if (Array.isArray(filterData)) {
+        return filterData.map((item) => (item.value ? `${item.id}: ${item.value}` : ""));
+      } else if (typeof filterData === "object" && filterData !== null && filterData.filter) {
+        return filterData.filter;
+      }
+      return [];
+    })
+    .flat();
 
-export function formatClaimBatchGQL(modulesManager, percentage, claimAdmin) {
-  let claimProjections = getClaimsProjections(modulesManager, false);
-  return `
-    percentage: ${percentage}
-    adminId: ${decodeId(claimAdmin.id)}
-  `;
+  const formattedPayload = [
+    percentage ? `percentage: ${percentage}` : "",
+    claimAdmin?.uuid ? `claimAdminUuid: "${claimAdmin?.uuid}"` : "",
+    ...processedFilters,
+  ]
+    .filter(Boolean)
+    .join("\n");
+
+  return formattedPayload;
+};
+
+export function createClaimSamplingBatch(claimSamplingFilters, clientMutationLabel) {
+  const mutation = formatMutation("createClaimSamplingBatch", formatFilters(claimSamplingFilters), clientMutationLabel);
+  const requestedDateTime = new Date();
+  console.log({ mutation });
+  return graphql(
+    mutation.payload,
+    [REQUEST(ACTION_TYPE.MUTATION), SUCCESS(ACTION_TYPE.CREATE_CLAIM_SAMPLING_BATCH), ERROR(ACTION_TYPE.MUTATION)],
+    {
+      actionType: ACTION_TYPE.CREATE_CLAIM_SAMPLING_BATCH,
+      clientMutationId: mutation.clientMutationId,
+      clientMutationLabel,
+      requestedDateTime,
+    },
+  );
 }
