@@ -1,2 +1,10 @@
 {
+    "ClaimSampling.claimSamplingButton": "Claim Sample",
+    "ClaimSampling.Form.Percentage": "Percent of claims to be reviewed manually",
+    "ClaimSampling.Form.ClaimAdmin": "Claim admin assigned",
+    "ClaimSampling.Form.Title": "Claim sample",
+    "ClaimSampling.Form.Description": "Pick parameters of new claim sample",
+    "ClaimSampling.Form.Create": "Create claim sample",
+    "ClaimSampling.Form.Cancel": "Cancel"
 }
+  
