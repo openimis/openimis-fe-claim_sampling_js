@@ -1,12 +1,4 @@
-import {
-  parseData,
-  dispatchMutationReq,
-  dispatchMutationResp,
-  dispatchMutationErr,
-  pageInfo,
-  formatServerError,
-  formatGraphQLError,
-} from "@openimis/fe-core";
+import { dispatchMutationResp } from "@openimis/fe-core";
 
 function reducer(
   state = {

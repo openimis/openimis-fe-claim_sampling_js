@@ -2,12 +2,7 @@ import React, { useState, Fragment } from "react";
 
 import { withTheme, withStyles } from "@material-ui/core/styles";
 import { Button, InputAdornment } from "@material-ui/core";
-import {
-  useTranslations,
-  useModulesManager,
-  NumberInput,
-  PublishedComponent,
-} from "@openimis/fe-core";
+import { useTranslations, useModulesManager, NumberInput, PublishedComponent } from "@openimis/fe-core";
 
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
@@ -40,7 +35,7 @@ const ClaimSamplingButton = ({ classes, filters }) => {
   const handleClaimAdmin = (value) => setClaimAdmin(value);
 
   const handleSave = () => {
-    createClaimSamplingBatch(modulesManager, {percentage, claimAdmin, filters});
+    createClaimSamplingBatch(modulesManager, { percentage, claimAdmin, filters });
   };
 
   const canSave = !(!!percentage && !!claimAdmin);
