@@ -28,7 +28,6 @@ const formatFilters = ({ percentage, claimAdmin, filters }) => {
 export function createClaimSamplingBatch(claimSamplingFilters, clientMutationLabel) {
   const mutation = formatMutation("createClaimSamplingBatch", formatFilters(claimSamplingFilters), clientMutationLabel);
   const requestedDateTime = new Date();
-  console.log({ mutation });
   return graphql(
     mutation.payload,
     [REQUEST(ACTION_TYPE.MUTATION), SUCCESS(ACTION_TYPE.CREATE_CLAIM_SAMPLING_BATCH), ERROR(ACTION_TYPE.MUTATION)],

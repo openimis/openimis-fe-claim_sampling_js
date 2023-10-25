@@ -1,4 +1,5 @@
 import React, { useState, Fragment } from "react";
+import { useDispatch } from "react-redux";
 
 import { makeStyles } from "@material-ui/styles";
 import {
@@ -22,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ClaimSamplingButton = ({ filters }) => {
+  const dispatch = useDispatch();
   const classes = useStyles();
   const modulesManager = useModulesManager();
   const { formatMessage } = useTranslations(MODULE_NAME, modulesManager);
@@ -31,7 +33,7 @@ const ClaimSamplingButton = ({ filters }) => {
   const [claimAdmin, setClaimAdmin] = useState(null);
 
   const onBatchConfirm = () => {
-    createClaimSamplingBatch({ percentage, claimAdmin, filters }, formatMessage("ClaimSampling.create.mutationLabel"));
+    dispatch(createClaimSamplingBatch({ percentage, claimAdmin, filters }, formatMessage("ClaimSampling.create.mutationLabel")));
   };
 
   const canSave = !(percentage && claimAdmin);
