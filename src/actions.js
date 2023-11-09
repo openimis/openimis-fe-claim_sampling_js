@@ -17,7 +17,7 @@ const formatFilters = ({ percentage, claimAdmin, filters }) => {
   const formattedPayload = [
     percentage ? `percentage: ${percentage}` : "",
     claimAdmin?.uuid ? `claimAdminUuid: "${claimAdmin?.uuid}"` : "",
-    ...processedFilters,
+    processedFilters ? `filters: {${processedFilters.join(", ")}}` : "",
   ]
     .filter(Boolean)
     .join("\n");
