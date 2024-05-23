@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, Fragment, useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 import { makeStyles } from "@material-ui/styles";
@@ -8,6 +8,7 @@ import {
   Dialog,
   DialogActions,
   DialogContent,
+  DialogContentText,
   DialogTitle,
   Divider,
   Grid,
@@ -29,14 +30,41 @@ const ClaimSamplingButton = ({ filters }) => {
   const { formatMessage } = useTranslations(MODULE_NAME, modulesManager);
 
   const [isOpen, setIsOpen] = useState(false);
+  const [wasSent, setWasSent] = useState(false);
   const [percentage, setPercentage] = useState(0);
-  const [claimAdmin, setClaimAdmin] = useState(null);
+  const [taskGroup, setTaskGroup] = useState(null);
 
   const onBatchConfirm = () => {
-    dispatch(createClaimSamplingBatch({ percentage, claimAdmin, filters }, formatMessage("ClaimSampling.create.mutationLabel")));
+    dispatch(createClaimSamplingBatch({ percentage, taskGroup, filters }, formatMessage("ClaimSampling.create.mutationLabel")));
+    setWasSent(true);
   };
 
-  const canSave = !(percentage && claimAdmin);
+  useEffect(() => {
+    if (wasSent === true) {
+      setIsOpen(false)
+      setPercentage(0)
+      setTaskGroup(null)
+    }
+  }, [wasSent]);
+
+  const onClose = () => setWasSent(false)
+  const canSave = !(percentage && taskGroup && percentage > 0 && percentage < 101);
+
+  if (wasSent === true) {
+    return (
+      <Dialog open={wasSent} onClose={onClose}>
+      <DialogTitle>{formatMessage('ClaimSampling.dialogActions.confirmationTitle')}</DialogTitle>
+      <DialogContent>
+        { formatMessage('ClaimSampling.dialogActions.confirmationContent') }
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={onClose} className={classes.button}>
+          {formatMessage('ClaimSampling.dialogActions.confirm')}
+        </Button>
+      </DialogActions>
+    </Dialog>
+    );
+  } 
 
   return (
     <Fragment>
@@ -67,10 +95,10 @@ const ClaimSamplingButton = ({ filters }) => {
             </Grid>
             <Grid className={classes.item}>
               <PublishedComponent
-                pubRef="claim.ClaimAdminPicker"
-                value={claimAdmin}
+                pubRef="tasksManagement.taskGroupPicker"
+                value={taskGroup}
                 withNull={false}
-                onChange={(claimAdmin) => setClaimAdmin(claimAdmin)}
+                onChange={(taskGroup) => setTaskGroup(taskGroup)}
                 required={true}
               />
             </Grid>

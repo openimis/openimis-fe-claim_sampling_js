@@ -6,5 +6,18 @@
   "ClaimSampling.Form.Description": "Pick parameters of new claim sample",
   "ClaimSampling.Form.Create": "Create claim sample",
   "ClaimSampling.Form.Cancel": "Cancel",
-  "ClaimSampling.create.mutationLabel": "Create Claim Sampling Batch"
+  "ClaimSampling.create.mutationLabel": "Create Claim Sampling Batch",
+  "ClaimSampling.tasks.title": "Claim Sampling Assingments",
+  "ClaimSampling.approveSampling": "Approve Sample For Review",
+  "ClaimSampling.rejectSampling": "Reject Sample For Review",
+  "ClaimSampling.taskConfirmation.title": "Confirm Claim Sampling Action",
+  "ClaimSampling.dialogActions.continue": "Continue",
+  "ClaimSampling.dialogActions.goBack": "Go Back",
+  "ClaimSampling.dialogActions.confirm": "Confirm",
+  "ClaimSampling.samplingSummaryTemplate.total": "Total: {totalClaimsInBatch}",
+  "ClaimSampling.samplingSummaryTemplate.reviewed": "Reviewed: {reviewedPercentage}%",
+  "ClaimSampling.samplingSummaryTemplate.deductibles": "Deductibles: {deductiblePercentage}%",
+  "ClaimSampling.samplingSummaryTemplate.summary": "Summary:",
+  "ClaimSampling.dialogActions.confirmationTitle": "Confirmaiton",
+  "ClaimSampling.dialogActions.confirmationContent": "New task for claim sampling was created."
 }
