@@ -1,9 +1,9 @@
 {
-  "name": "@openimis/fe-template",
+  "name": "@openimis/fe-claim_sampling",
   "version": "1.2.0-rc1",
   "license": "AGPL-3.0-only",
   "description": "openIMIS Frontend Template module",
-  "repository": "openimis/openimis-fe-template_js",
+  "repository": "openimis/openimis-fe-claim_sampling_js",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "engines": {
