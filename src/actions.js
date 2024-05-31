@@ -24,8 +24,10 @@ const formatFilters = ({ percentage, taskGroup, filters }) => {
         const key = f[0];
         let value = JSON.parse(f[1]);
   
+        console.log(key, value, /^[A-Za-z0-9+/]{22}==$/.test(value))
         // Decode base64 if it's an encoded UUID
-        if (typeof value === 'string' && /^[A-Za-z0-9+/]+={0,2}$/.test(value)) {
+        if (typeof value === 'string' && /^[A-Za-z0-9+/]{22}==$/.test(value)) {
+          console.log("Decodin'")
           value = decodeId(value);
         }
         return [key, value];
