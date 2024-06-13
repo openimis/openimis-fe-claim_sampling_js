@@ -7,6 +7,8 @@ export const RIGHT_APPROVE = 126004;
 export const APPROVED = 'APPROVED';
 export const FAILED = 'FAILED';
 
+export const CLAIM_SAMPLING_TASK_SOURCE = 'claim_sampling';
+
 export const TASK_STATUS = {
     RECEIVED: 'RECEIVED',
     ACCEPTED: 'ACCEPTED',
