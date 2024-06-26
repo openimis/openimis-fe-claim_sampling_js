@@ -16,7 +16,7 @@ import {
 
 import { useTranslations, useModulesManager, NumberInput, PublishedComponent } from "@openimis/fe-core";
 import { createClaimSamplingBatch } from "../actions";
-import { MODULE_NAME } from "../constants";
+import { MODULE_NAME, CLAIM_SAMPLING_TASK_SOURCE } from "../constants";
 
 const useStyles = makeStyles((theme) => ({
   primaryButton: theme.dialog.primaryButton,
@@ -98,6 +98,7 @@ const ClaimSamplingButton = ({ filters }) => {
                 pubRef="tasksManagement.taskGroupPicker"
                 value={taskGroup}
                 withNull={false}
+                source={CLAIM_SAMPLING_TASK_SOURCE}
                 onChange={(taskGroup) => setTaskGroup(taskGroup)}
                 required={true}
               />
