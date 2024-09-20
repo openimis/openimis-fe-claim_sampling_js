@@ -7,7 +7,7 @@
   "ClaimSampling.Form.Create": "Create claim sample",
   "ClaimSampling.Form.Cancel": "Cancel",
   "ClaimSampling.create.mutationLabel": "Create Claim Sampling Batch",
-  "ClaimSampling.tasks.title": "Claim Sampling Assingments",
+  "ClaimSampling.tasks.title": "Claim Sampling Assignments",
   "ClaimSampling.approveSampling": "Approve Sample For Review",
   "ClaimSampling.rejectSampling": "Reject Sample For Review",
   "ClaimSampling.taskConfirmation.title": "Confirm Claim Sampling Action",
