@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Paper, Fab, Checkbox, FormControlLabel, Divider, Grid, makeStyles, IconButton, Typography } from '@material-ui/core';
+import { Paper, Fab, Divider, makeStyles, IconButton, Typography } from '@material-ui/core';
 import TabIcon from "@material-ui/icons/Tab";
-import { Table, TableHead, TableRow, TableCell, SelectDialog, formatMessage, formatMessageWithValues, decodeId, useHistory, useModulesManager, historyPush, FormattedMessage } from "@openimis/fe-core";
+import { Table, SelectDialog, formatMessage, formatMessageWithValues, decodeId, useHistory, useModulesManager, historyPush } from "@openimis/fe-core";
 import CheckIcon from '@material-ui/icons/Check';
 import ClearIcon from '@material-ui/icons/Clear';
 import { useDispatch, useSelector } from "react-redux";

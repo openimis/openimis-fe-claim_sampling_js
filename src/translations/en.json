@@ -19,5 +19,9 @@
   "ClaimSampling.samplingSummaryTemplate.deductibles": "Deductibles: {deductiblePercentage}%",
   "ClaimSampling.samplingSummaryTemplate.summary": "Summary:",
   "ClaimSampling.dialogActions.confirmationTitle": "Confirmaiton",
-  "ClaimSampling.dialogActions.confirmationContent": "New task for claim sampling was created."
+  "ClaimSampling.dialogActions.confirmationContent": "New task for claim sampling was created.",
+  "claim_sampling.gql_query_claim_batch_samplings_perms": "Claim Sampling | Query Claim Batch Samplings",
+  "claim_sampling.gql_mutation_create_claim_batch_samplings_perms": "Claim Sampling | Mutation Create Claim Batch Samplings",
+  "claim_sampling.gql_mutation_update_claim_batch_samplings_perms": "Claim Sampling | Mutation Update Claim Batch Samplings",
+  "claim_sampling.gql_mutation_approve_claim_batch_samplings_perms": "Claim Sampling | Mutation Approve Claim Batch Samplings"
 }
