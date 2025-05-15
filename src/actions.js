@@ -2,11 +2,7 @@ import { REQUEST, ERROR, SUCCESS } from "./utils/action-types";
 import { ACTION_TYPE } from "./reducer";
 import {
   graphql,
-  formatQuery,
-  formatPageQuery,
-  formatPageQueryWithCount,
   formatMutation,
-  formatGQLString,
   graphqlWithVariables,
   prepareMutation,
 } from '@openimis/fe-core';
