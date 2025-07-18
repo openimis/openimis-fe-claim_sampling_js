@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Paper, Fab, Divider, makeStyles, IconButton, Typography } from '@material-ui/core';
-import TabIcon from "@material-ui/icons/Tab";
+import { Paper, Fab, Divider, IconButton, Typography } from '@mui/material';
+import { makeStyles } from '@mui/material/styles';
+import TabIcon from "@mui/icons-material/Tab";
 import { Table, SelectDialog, formatMessage, formatMessageWithValues, decodeId, useHistory, useModulesManager, historyPush } from "@openimis/fe-core";
-import CheckIcon from '@material-ui/icons/Check';
-import ClearIcon from '@material-ui/icons/Clear';
+import CheckIcon from '@mui/icons-material/Check';
+import ClearIcon from '@mui/icons-material/Clear';
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSampledClaims, resolveClaimTask, fetchSummaryForSamplingTaskResolution } from '../../actions';
 import { TASK_STATUS, APPROVED, FAILED } from "../../constants";

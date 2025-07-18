@@ -1,7 +1,7 @@
 import React, { useState, Fragment, useEffect } from "react";
 import { useDispatch } from "react-redux";
 
-import { makeStyles } from "@material-ui/styles";
+import { makeStyles } from "@mui/material/styles";
 import {
   Button,
   InputAdornment,
@@ -11,7 +11,7 @@ import {
   DialogTitle,
   Divider,
   Grid,
-} from "@material-ui/core";
+} from "@mui/material";
 
 import { useTranslations, useModulesManager, NumberInput, PublishedComponent } from "@openimis/fe-core";
 import { createClaimSamplingBatch } from "../actions";

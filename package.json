@@ -26,5 +26,8 @@
   "files": [
     "dist"
   ],
-  "dependencies": {}
+  "dependencies": {
+    "@mui/material": "^5.15.14",
+    "@mui/icons-material": "^5.14.17"
+  }
 }
