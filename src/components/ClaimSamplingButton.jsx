@@ -1,7 +1,7 @@
 import React, { useState, Fragment, useEffect } from "react";
 import { useDispatch } from "react-redux";
 
-import { makeStyles } from "@mui/material/styles";
+import { useTheme, styled } from "@mui/material/styles";
 import {
   Button,
   InputAdornment,
@@ -17,14 +17,16 @@ import { useTranslations, useModulesManager, NumberInput, PublishedComponent } f
 import { createClaimSamplingBatch } from "../actions";
 import { MODULE_NAME, CLAIM_SAMPLING_TASK_SOURCE } from "../constants";
 
-const useStyles = makeStyles((theme) => ({
-  primaryButton: theme.dialog.primaryButton,
-  item: theme.paper.item,
+const StyledButton = styled(Button)(({ theme }) => ({
+  ...theme.dialog.primaryButton,
+}));
+
+const StyledGrid = styled(Grid)(({ theme }) => ({
+  ...theme.paper.item,
 }));
 
 const ClaimSamplingButton = ({ filters }) => {
   const dispatch = useDispatch();
-  const classes = useStyles();
   const modulesManager = useModulesManager();
   const { formatMessage } = useTranslations(MODULE_NAME, modulesManager);
 
@@ -57,9 +59,9 @@ const ClaimSamplingButton = ({ filters }) => {
         { formatMessage('ClaimSampling.dialogActions.confirmationContent') }
       </DialogContent>
       <DialogActions>
-        <Button onClick={onClose} className={classes.button}>
+        <StyledButton onClick={onClose} className="button">
           {formatMessage('ClaimSampling.dialogActions.confirm')}
-        </Button>
+        </StyledButton>
       </DialogActions>
     </Dialog>
     );
@@ -67,15 +69,15 @@ const ClaimSamplingButton = ({ filters }) => {
 
   return (
     <Fragment>
-      <Grid className={classes.item} container xs={3} alignItems="center" justifyContent="flex-end">
-        <Button variant="contained" color="primary" className={classes.button} onClick={() => setIsOpen(true)}>
+      <StyledGrid className="item" container xs={3} alignItems="center" justifyContent="flex-end">
+        <StyledButton variant="contained" color="primary" className="button" onClick={() => setIsOpen(true)}>
           {formatMessage("claimSamplingButton")}
-        </Button>
+        </StyledButton>
         <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
           <DialogTitle>{formatMessage("ClaimSampling.Form.Title")}</DialogTitle>
           <Divider />
           <DialogContent>
-            <Grid className={classes.item}>
+            <StyledGrid className="item">
               <NumberInput
                 module="claimSampling"
                 label="ClaimSampling.Form.Percentage"
@@ -91,8 +93,8 @@ const ClaimSamplingButton = ({ filters }) => {
                   type: "number",
                 }}
               />
-            </Grid>
-            <Grid className={classes.item}>
+            </StyledGrid>
+            <StyledGrid className="item">
               <PublishedComponent
                 pubRef="tasksManagement.taskGroupPicker"
                 value={taskGroup}
@@ -101,7 +103,7 @@ const ClaimSamplingButton = ({ filters }) => {
                 onChange={(taskGroup) => setTaskGroup(taskGroup)}
                 required={true}
               />
-            </Grid>
+            </StyledGrid>
           </DialogContent>
           <DialogActions>
             <Button onClick={() => setIsOpen(false)}>{formatMessage("ClaimSampling.Form.Cancel")}</Button>
@@ -110,7 +112,7 @@ const ClaimSamplingButton = ({ filters }) => {
             </Button>
           </DialogActions>
         </Dialog>
-      </Grid>
+      </StyledGrid>
     </Fragment>
   );
 };
