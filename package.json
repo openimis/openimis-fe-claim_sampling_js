@@ -14,10 +14,10 @@
     "build": "vite build",
     "start": "vite",
     "format": "prettier src -w",
-    "prepare":"npm run build"
+    "prepare": "npm run build"
   },
   "peerDependency": {
-    "react-intl": "^5.8.1"
+    "react-intl": "^7.1.11"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^5.0.0",
