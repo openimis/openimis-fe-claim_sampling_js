@@ -69,7 +69,7 @@ const ClaimSamplingButton = ({ filters }) => {
 
   return (
     <Fragment>
-      <StyledGrid className="item" container xs={3} alignItems="center" justifyContent="flex-end">
+      <StyledGrid className="item" container size={3} alignItems="center" justifyContent="flex-end">
         <StyledButton variant="contained" color="primary" className="button" onClick={() => setIsOpen(true)}>
           {formatMessage("claimSamplingButton")}
         </StyledButton>
