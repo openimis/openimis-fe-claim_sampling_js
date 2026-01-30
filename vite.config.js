@@ -6,6 +6,7 @@ import pkg from './package.json';
 export default defineConfig({
   plugins: [react({
     jsxRuntime: 'automatic',
+    jsxImportSource: '@emotion/react',
   })],
   build: {
     lib: {
