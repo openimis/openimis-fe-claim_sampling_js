@@ -18,11 +18,11 @@ import { createClaimSamplingBatch } from "../actions";
 import { MODULE_NAME, CLAIM_SAMPLING_TASK_SOURCE } from "../constants";
 
 const StyledButton = styled(Button)(({ theme }) => ({
-  ...theme.dialog.primaryButton,
+  ...theme.dialog?.primaryButton ?? {},
 }));
 
 const StyledGrid = styled(Grid)(({ theme }) => ({
-  ...theme.paper.item,
+  ...theme.paper?.item ?? {},
 }));
 
 const ClaimSamplingButton = ({ filters }) => {

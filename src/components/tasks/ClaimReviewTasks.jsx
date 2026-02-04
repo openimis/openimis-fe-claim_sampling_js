@@ -13,9 +13,9 @@ import { TASK_STATUS, APPROVED, FAILED } from "../../constants";
 import { useIntl } from "react-intl";
 
 const StyledPaper = styled(Paper)(({ theme }) => ({
-  ...theme.paper.paper,
-  '& .title': theme.paper.title,
-  '& .button': theme.paper.button,
+  ...theme.paper?.paper ?? {},
+  '& .title': theme.paper?.title ?? {},
+  '& .button': theme.paper?.button ?? {},
   '& .fabContainer': {
     display: 'flex',
     justifyContent: 'center',
