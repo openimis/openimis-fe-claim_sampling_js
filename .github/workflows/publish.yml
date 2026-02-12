@@ -24,7 +24,7 @@ on:
         description: 'Access level for npm package'
         required: false
         default: 'public'
-      tab:
+      tag:
         required: true
 
 jobs:
@@ -32,19 +32,19 @@ jobs:
     uses: openimis/openimis-fe_js/.github/workflows/module-npmpublish.yml@develop
     with:
       registry_url: 'https://registry.npmjs.org/'
-      node_version: ${{ github.event.inputs.node_version }}
-      access: ${{ github.event.inputs.access }}
-      scope: ${{ github.event.inputs.scope }}
-      tag:  ${{ github.event.inputs.tag }}
+      node_version: ${{ github.event.inputs.node_version || '20' }}
+      access: ${{ github.event.inputs.access || 'public' }}
+      scope: ${{ github.event.inputs.scope || 'openimis' }}
+      tag: ${{ github.event.inputs.tag }}
     secrets:
       NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
   call-gpr-publish-workflow:
     uses: openimis/openimis-fe_js/.github/workflows/module-npmpublish.yml@develop
     with:
       registry_url: 'https://npm.pkg.github.com/'
-      node_version: ${{ github.event.inputs.node_version }}
-      access: ${{ github.event.inputs.access }}
-      scope: ${{ github.event.inputs.scope }}
-      tag:  ${{ github.event.inputs.tag }}
+      node_version: ${{ github.event.inputs.node_version || '20' }}
+      access: ${{ github.event.inputs.access || 'public' }}
+      scope: ${{ github.event.inputs.scope || 'openimis' }}
+      tag: ${{ github.event.inputs.tag }}
     secrets:
       NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
