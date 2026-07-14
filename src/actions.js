@@ -19,7 +19,7 @@ const formatFilters = ({ percentage, taskGroup, filters }) => {
       .map((f) => {
         const key = f[0];
         let value = JSON.parse(f[1]);
-  
+
         // Decode base64 if it's an encoded UUID
         if (typeof value === 'string' && /^[A-Za-z0-9+/]{22}==$/.test(value)) {
           value = decodeId(value);
@@ -60,13 +60,13 @@ export function fetchSampledClaims(variables) {
     `
       query (
         $claimSample_Id: UUID!,
-        ${variables.after ? ',$after: String' : ''} 
+        ${variables.after ? ',$after: String' : ''}
         ${variables.before ? ',$before: String' : ''}
         ${variables.pageSize ? ',$pageSize: Int' : ''}
         ${variables.status ? ', $status: String' : ''}
          ) {
         samplingBatchClaims(
-          claimSamplingId: $claimSample_Id, 
+          claimSamplingId: $claimSample_Id,
           ${variables.before ? ',before:$before, last:$pageSize' : ''}
           ${!variables.before ? ',first:$pageSize' : ''}
           ${variables.after ? ',after:$after' : ''}
@@ -127,14 +127,14 @@ export function resolveClaimTask(task, clientMutationLabel, user, approveOrFail,
   const userId = user?.id;
 
   const mutation2 = prepareMutation(
-    `mutation ($clientMutationLabel:String, $clientMutationId: String, $id:UUID!, 
+    `mutation ($clientMutationLabel:String, $clientMutationId: String, $id:UUID!,
       $businessStatus: JSONString!, ${additionalData ? '$additionalData: JSONString!' : ''}
     ) {
       resolveTask(
       input: {
         clientMutationId: $clientMutationId
         clientMutationLabel: $clientMutationLabel
-  
+
         id: $id
         businessStatus: $businessStatus
         ${additionalData ? 'additionalData: $additionalData' : ''}
@@ -181,8 +181,6 @@ export function resolveClaimTask(task, clientMutationLabel, user, approveOrFail,
       additionalData: additionalData ? JSON.stringify({ entries: additionalData, decision: additionalData }) : undefined,
     },
   );
-
-  user.clientMutationId = mutation.clientMutationId;
 
   return graphqlWithVariables(
     mutation2.operation,
