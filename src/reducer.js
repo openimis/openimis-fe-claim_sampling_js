@@ -13,6 +13,7 @@ export const ACTION_TYPE = {
   MUTATION: "CLAIM_SAMPLING_MUTATION",
   CREATE_CLAIM_SAMPLING_BATCH: "CLAIM_SAMPLING_BATCH_CREATE",
   GET_CLAIMS_FOR_SAMPLING: "GET_CLAIMS_FOR_SAMPLING",
+  GET_ALL_CLAIMS_FOR_SAMPLING: "GET_ALL_CLAIMS_FOR_SAMPLING",
   RESOLVE_TASK: 'TASK_MANAGEMENT_RESOLVE_TASK',
   GET_SAMPLING_SUMMARY: 'GET_SAMPLING_SUMMARY'
 };
@@ -21,10 +22,15 @@ function reducer(
   state = {
     submittingMutation: false,
     claimsInSample: [],
-    fetchingClaimsInSample: false, 
+    fetchingClaimsInSample: false,
     fetchedClaimsInSample: true,
     errorFetchingClaimsInSample: null,
     fetchedClaimsInSamplePageInfo: {},
+    allClaimsInSample: [],
+    fetchingAllClaimsInSample: false,
+    fetchedAllClaimsInSample: true,
+    errorFetchingAllClaimsInSample: null,
+    fetchedAllClaimsInSamplePageInfo: {},
     samplingSummary: {
       fetching: false,
       fetched: false,
@@ -69,6 +75,32 @@ function reducer(
         ...state,
         fetchingClaimsInSample: false,
         errorFetchingClaimsInSample: formatGraphQLError(action.payload),
+      };
+    case REQUEST(ACTION_TYPE.GET_ALL_CLAIMS_FOR_SAMPLING):
+      return {
+        ...state,
+        allClaimsInSample: [],
+        fetchingAllClaimsInSample: true,
+        fetchedAllClaimsInSample: false,
+        errorFetchingAllClaimsInSample: null,
+      };
+    case SUCCESS(ACTION_TYPE.GET_ALL_CLAIMS_FOR_SAMPLING):
+      return {
+        ...state,
+        allClaimsInSample: parseData(action.payload.data.samplingBatchClaims)?.map((i) => ({
+          ...i,
+          id: decodeId(i.id),
+        })),
+        fetchedAllClaimsInSamplePageInfo: pageInfo(action.payload.data.samplingBatchClaims),
+        fetchingAllClaimsInSample: false,
+        fetchedAllClaimsInSample: true,
+        errorFetchingAllClaimsInSample: formatGraphQLError(action.payload),
+      };
+    case ERROR(ACTION_TYPE.GET_ALL_CLAIMS_FOR_SAMPLING):
+      return {
+        ...state,
+        fetchingAllClaimsInSample: false,
+        errorFetchingAllClaimsInSample: formatGraphQLError(action.payload),
       };
     case SUCCESS(ACTION_TYPE.RESOLVE_TASK):
       return dispatchMutationResp(state, 'resolveTask', action);

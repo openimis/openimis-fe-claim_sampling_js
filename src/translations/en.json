@@ -18,6 +18,8 @@
   "ClaimSampling.samplingSummaryTemplate.reviewed": "Reviewed: {reviewedPercentage}%",
   "ClaimSampling.samplingSummaryTemplate.deductibles": "Deductibles: {deductiblePercentage}%",
   "ClaimSampling.samplingSummaryTemplate.summary": "Summary:",
+  "ClaimSampling.showAllClaims": "Show sample claim batches",
+  "ClaimSampling.allClaimsTitle": "Sample claim batches",
   "ClaimSampling.dialogActions.confirmationTitle": "Confirmaiton",
   "ClaimSampling.dialogActions.confirmationContent": "New task for claim sampling was created.",
   "claim_sampling.gql_query_claim_batch_samplings_perms": "Claim Sampling | Query Claim Batch Samplings",
