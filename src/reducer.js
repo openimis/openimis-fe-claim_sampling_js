@@ -5,6 +5,7 @@ import {
   formatGraphQLError,
   dispatchMutationResp,
   dispatchMutationErr,
+  dispatchMutationDefault,
   dispatchMutationReq,
   decodeId
 } from "@openimis/fe-core";
@@ -151,7 +152,7 @@ function reducer(
         }
       };
     default:
-      return state;
+      return dispatchMutationDefault(state, action);
   }
 }
 
