@@ -14,7 +14,7 @@ import { TASK_STATUS, APPROVED, FAILED } from "../../constants";
 import { useIntl } from "react-intl";
 
 const StyledPaper = styled(Paper)(({ theme }) => ({
-  ...theme.paper?.paper ?? {},
+  ...(theme.paper?.paper ?? {}),
   '& .title': theme.paper?.title ?? {},
   '& .button': theme.paper?.button ?? {},
   '& .fabContainer': {
@@ -235,7 +235,11 @@ function ClaimReviewTaskDisplay({ businessData, setAdditionalData, jsonExt }) {
               rowDisabled={isRowDisabled}
               onDoubleClick={onDoubleClick}
             />
-          <Box mt={2} mb={2}>
+          <Box
+            sx={{
+              mt: 2,
+              mb: 2
+            }}>
             <FormControlLabel
                 control={
                     <Checkbox
@@ -248,7 +252,9 @@ function ClaimReviewTaskDisplay({ businessData, setAdditionalData, jsonExt }) {
             />
           </Box>
           <Collapse in={allClaimsState.show}>
-             <Box mt={2}>
+             <Box sx={{
+               mt: 2
+             }}>
                 <Typography variant="h6">
                     {formatMessage(intl, "ClaimSampling", "allClaimsTitle")}
                 </Typography>
